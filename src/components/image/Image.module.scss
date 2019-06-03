@@ -1,0 +1,15 @@
+.imageContainer {
+  position: relative;
+}
+
+.image {
+  max-width: 100%;
+  height: auto;
+}
+
+.isLoading {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
