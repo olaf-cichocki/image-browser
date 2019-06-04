@@ -19,7 +19,9 @@ const App: React.FC = () => {
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" className="nav-link">
+                  Home
+                </Link>
               </li>
             </ul>
           </nav>
