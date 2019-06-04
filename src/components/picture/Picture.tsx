@@ -1,13 +1,16 @@
 import React from 'react';
-import css from './Image.module.scss';
 import classNames from 'classnames';
+import { Image as CloudImage, Transformation } from 'cloudinary-react';
+import { ImageData } from '../../entities/picture';
 import Placeholder from './Placeholder';
+import css from './Picture.module.scss';
 
-interface ImageProps {
-  src: string;
+interface ImageProps extends Partial<ImageData> {
   width: number;
   height: number;
+  className?: string;
   placeholderColor?: string;
+  [x: string]: any; // TODO: Add types to cloudinary-react and extend that instead
 }
 
 interface ImageState {
@@ -28,7 +31,7 @@ class Image extends React.Component<ImageProps, ImageState> {
   }
 
   componentDidUpdate(prevProps: ImageProps) {
-    const isSameImage = this.props.src === prevProps.src;
+    const isSameImage = this.props.publicId === prevProps.publicId;
     const isAlreadyLoaded = this.image.current!.complete;
 
     if (this.state.error && !isSameImage) {
@@ -53,7 +56,14 @@ class Image extends React.Component<ImageProps, ImageState> {
   };
 
   render() {
-    const { src, width, height, placeholderColor = 'gray' } = this.props;
+    const {
+      width,
+      height,
+      publicId,
+      className,
+      placeholderColor = 'gray',
+      ...imageProps
+    } = this.props;
     const { loaded, error } = this.state;
 
     if (error) {
@@ -73,14 +83,22 @@ class Image extends React.Component<ImageProps, ImageState> {
             placeholderColor={placeholderColor}
           />
         )}
-        <img
+        <CloudImage
+          responsive
           ref={this.image}
+          quality="auto"
+          fetchFormat="auto"
+          placeholder="blank"
           className={classNames(css.image, {
+            className,
             [css.isLoading]: !loaded
           })}
           onLoad={this.setLoaded}
-          src={src}
-        />
+          publicId={publicId}
+          {...imageProps}
+        >
+          <Transformation width="auto" dpr="auto" crop="scale" />
+        </CloudImage>
       </figure>
     );
   }

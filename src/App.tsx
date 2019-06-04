@@ -1,23 +1,37 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import MainRoute from './routes/Main';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+import { CloudinaryContext } from 'cloudinary-react';
+import { CLOUD_NAME } from './constants/images';
+import MainRoute from './routes/main/Main';
+import DetailRoute from './routes/Detail';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-        </nav>
+    <CloudinaryContext cloudName={CLOUD_NAME} width="auto">
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+            </ul>
+          </nav>
 
-        <Route path="/" exact component={MainRoute} />
-      </div>
-    </Router>
+          <Switch>
+            <Route path="/details/:id" component={DetailRoute} />
+            <Route path="/" exact component={MainRoute} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      </Router>
+    </CloudinaryContext>
   );
 };
 

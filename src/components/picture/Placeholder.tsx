@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './Image.module.scss';
+import css from './Picture.module.scss';
 
 interface ImageProps {
   width: number;
