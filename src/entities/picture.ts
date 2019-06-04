@@ -19,7 +19,7 @@ class PictureEntity {
   }
 }
 
-createModelSchema(PictureEntity, {
+export const pictureSchema = createModelSchema(PictureEntity, {
   publicId: identifier(),
   width: primitive(),
   height: primitive(),

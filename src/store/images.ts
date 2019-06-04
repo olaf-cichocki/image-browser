@@ -1,6 +1,6 @@
 import { RootStore } from './index';
 import { observable, action, IObservableArray } from 'mobx';
-import { fetchImages } from '../demo/api';
+import API, { Api } from '../demo/api';
 import {
   createSimpleSchema,
   list,
@@ -11,20 +11,25 @@ import PictureEntity, { ImageData } from '../entities/picture';
 
 export class ImagesStore {
   root: RootStore;
+  api: Api;
   @observable loading = true;
   @observable images: IObservableArray<PictureEntity> = observable([]);
 
-  constructor(rootStore: RootStore) {
+  constructor(rootStore: RootStore, api = API) {
     this.root = rootStore;
+    this.api = api;
     this.fetchImages(); // TODO: Change
   }
 
   public fetchImages() {
-    fetchImages()
-      .then(this.updateImagesList)
-      // TODO: Proper error handling
-      .catch(() => new Error('Something went wrong!'))
-      .finally(() => this.handleLoading(false));
+    return (
+      this.api
+        .fetchImages()
+        .then(this.updateImagesList)
+        // TODO: Proper error handling
+        .catch(() => new Error('Something went wrong!'))
+        .finally(() => this.handleLoading(false))
+    );
   }
 
   public getImageById = (id: string) =>
@@ -43,7 +48,7 @@ export class ImagesStore {
   }
 }
 
-const storeModel = createSimpleSchema({
+export const storeModel = createSimpleSchema({
   images: list(object(PictureEntity))
 });
 
