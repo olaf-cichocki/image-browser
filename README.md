@@ -25,14 +25,14 @@ To be honest I love BIO (BEM, ITCSS, OOCSS), and would gladly spend time handcra
 
 ## Future plans
 
-Increase test coverage
-Add proper API calls and error handling
-Increase support for older browsers
-Move CSS to BIO
-Figure out how to properly use srcset with react-cloudinary
-Create react-cloudinary types declaration
-Replace simple gray background with some nice svg
-Add some loaders
+* Increase test coverage
+* Add proper API calls and error handling
+* Increase support for older browsers
+* Move CSS to BIO
+* Figure out how to properly use srcset with react-cloudinary
+* Create react-cloudinary types declaration
+* Replace simple gray background with some nice svg
+* Add some loaders
 
 ---
 
