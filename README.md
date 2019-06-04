@@ -11,6 +11,7 @@ Benefits of this approach:
 - Less boilerplate
 - Less DOM updates
 - More architectural freedom (possibility for DI, single or multiple stores, etc.)
+- Make it actually look nice
 
 ### use Commitizen
 
