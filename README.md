@@ -1,3 +1,40 @@
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+## Why did you
+
+### choose MobX
+
+MobX is one of the two state mangement libraries mentioned in React docs. I have used Redux extensively over past few years, so I decided to play with something else here this time, to spice things up.
+Benefits of this approach:
+
+- Great performance because of Observer pattern and rendering optimisations
+- Less boilerplate
+- Less DOM updates
+- More architectural freedom (possibility for DI, single or multiple stores, etc.)
+
+### use Commitizen
+
+Alongside clean code, and comments in the code, meaningful commit measages are great way to convey to other developers the reasons behid code changes. I believe that making better commits makes a diference.
+
+### use Css Modules/Bootstrap
+
+To be honest I love BIO (BEM, ITCSS, OOCSS), and would gladly spend time handcrafting minimal CSS to go along with this project. The thing is, because of the time constraint I have, I had to choose where to focus, so I decided to use something faster to implement. I chosen CSS Modules provide great balance between safety and convinience, and Bootstrap gave me ready made classes.
+
+---
+
+## Future plans
+
+Increase test coverage
+Add proper API calls and error handling
+Increase support for older browsers
+Move CSS to BIO
+Figure out how to properly use srcset with react-cloudinary
+Create react-cloudinary types declaration
+Replace simple gray background with some nice svg
+Add some loaders
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -26,21 +63,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)

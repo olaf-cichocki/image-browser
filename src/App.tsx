@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+import { CloudinaryContext } from 'cloudinary-react';
+import { CLOUD_NAME } from './constants/images';
+import MainRoute from './routes/main/Main';
+import DetailRoute from './routes/Detail';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CloudinaryContext cloudName={CLOUD_NAME} width="auto">
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+            </ul>
+          </nav>
+
+          <Switch>
+            <Route path="/details/:id" component={DetailRoute} />
+            <Route path="/" exact component={MainRoute} />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      </Router>
+    </CloudinaryContext>
   );
-}
+};
 
 export default App;
