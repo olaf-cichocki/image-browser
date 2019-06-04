@@ -7,12 +7,12 @@ import {
   object,
   update as updateStore
 } from 'serializr';
-import Picture, { ImageData } from '../entities/picture';
+import PictureEntity, { ImageData } from '../entities/picture';
 
 export class ImagesStore {
   root: RootStore;
   @observable loading = true;
-  @observable images: IObservableArray<Picture> = observable([]);
+  @observable images: IObservableArray<PictureEntity> = observable([]);
 
   constructor(rootStore: RootStore) {
     this.root = rootStore;
@@ -27,12 +27,10 @@ export class ImagesStore {
       .finally(() => this.handleLoading(false));
   }
 
-  public getImageById = (id: string) => {
-    console.log([...this.images]);
-    return this.images.find(image => image.publicId === id);
-  };
+  public getImageById = (id: string) =>
+    this.images.find(image => image.publicId === id);
 
-  @action.bound public removeImage(image: Picture) {
+  @action.bound public removeImage(image: PictureEntity) {
     this.images.remove(image);
   }
 
@@ -46,7 +44,7 @@ export class ImagesStore {
 }
 
 const storeModel = createSimpleSchema({
-  images: list(object(Picture))
+  images: list(object(PictureEntity))
 });
 
 export default ImagesStore;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import Store from '../../store';
-import Picture from '../../components/picture/Picture';
 import Column from './Column';
 
 const MainRoute: React.FC = () => {

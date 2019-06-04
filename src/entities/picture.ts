@@ -8,7 +8,7 @@ export interface ImageData {
   title: string;
 }
 
-class Picture {
+class PictureEntity {
   publicId: string = '';
   width: number = 0;
   height: number = 0;
@@ -19,11 +19,11 @@ class Picture {
   }
 }
 
-createModelSchema(Picture, {
+createModelSchema(PictureEntity, {
   publicId: identifier(),
   width: primitive(),
   height: primitive(),
   title: primitive()
 });
 
-export default Picture;
+export default PictureEntity;
