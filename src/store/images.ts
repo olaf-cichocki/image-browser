@@ -18,7 +18,7 @@ export class ImagesStore {
   constructor(rootStore: RootStore, api = API) {
     this.root = rootStore;
     this.api = api;
-    this.fetchImages(); // TODO: Change
+    this.fetchImages();
   }
 
   public fetchImages() {

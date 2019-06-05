@@ -11,7 +11,6 @@ Benefits of this approach:
 - Less boilerplate
 - Less DOM updates
 - More architectural freedom (possibility for DI, single or multiple stores, etc.)
-- Make it actually look nice
 
 ### use Commitizen
 
@@ -19,7 +18,11 @@ Alongside clean code, and comments in the code, meaningful commit measages are g
 
 ### use Css Modules/Bootstrap
 
-To be honest I love BIO (BEM, ITCSS, OOCSS), and would gladly spend time handcrafting minimal CSS to go along with this project. The thing is, because of the time constraint I have, I had to choose where to focus, so I decided to use something faster to implement. I chosen CSS Modules provide great balance between safety and convinience, and Bootstrap gave me ready made classes.
+To be honest I love BIO (BEM, ITCSS, OOCSS), and would gladly spend time handcrafting minimal CSS to go along with this project. The thing is, because of the time constraint I have, I had to choose where to focus, so I decided to use something faster to implement. I have chosen CSS Modules because it provides great balance between safety and convinience, and Bootstrap gave me ready made classes.
+
+### choose masonry layout for grid
+
+I just like it :-)
 
 ---
 
@@ -29,10 +32,22 @@ To be honest I love BIO (BEM, ITCSS, OOCSS), and would gladly spend time handcra
 * Add proper API calls and error handling
 * Increase support for older browsers
 * Move CSS to BIO
-* Figure out how to properly use srcset with react-cloudinary
-* Create react-cloudinary types declaration
-* Replace simple gray background with some nice svg
-* Add some loaders
+* Find a way to use srcset with react-cloudinary(!)
+* Create react-cloudinary Typescript types declaration
+* Replace simple gray background with some nice svg for Placeholder
+* Add loading indicators
+* Clean up the code a little
+* Proper error handling
+* Add Error boundaries
+* Create algorithm to make sure the images are properly distributed in the masonry grid
+  * calculate the heights of images in grid
+  * make sure each columns get the set of images that will create roughly same sized columns
+* Make the app look nice
+* Lazy load images below the fold
+* Make Main view into "infinite scroll"
+  * Add some nice animations to the the new apperaing items
+  * Reflect the progress through a scroll in url using react-router
+  * "Virtualize" items out of the fold, for a a better performance with long scrolls
 
 ---
 
