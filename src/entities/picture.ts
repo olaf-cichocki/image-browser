@@ -12,10 +12,10 @@ class PictureEntity {
   publicId: string = '';
   width: number = 0;
   height: number = 0;
-  @observable title: string = '';
+  @observable title: string = 'Untitled';
 
   @action.bound rename(newTitle: string) {
-    this.title = newTitle;
+    this.title = newTitle || 'Untitled';
   }
 }
 
