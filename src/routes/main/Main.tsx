@@ -13,7 +13,7 @@ const MainRoute: React.FC = () => {
   return (
     <section className="App">
       <main>
-        <section className="container">
+        <section className="container-fluid">
           <div className="jumbotron">
             <header>
               <h1 className="text-center text-primary mb-4">
