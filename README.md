@@ -1,5 +1,9 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
+## Demo
+
+Find a current master branch demo here: [I'm an inline-style link with title](https://image-browser.netlify.com/ "Image Browser")
+
 ## Why did you
 
 ### choose MobX
