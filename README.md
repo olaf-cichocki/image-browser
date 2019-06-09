@@ -2,7 +2,8 @@
 
 ## Demo
 
-Find a current master branch demo here: [I'm an inline-style link with title](https://image-browser.netlify.com/ "Image Browser")
+Find a current master branch demo here: [Image Browser](https://image-browser.netlify.com/ "Image Browser")
+Demo should be updated minutes after merge to master.
 
 ## Why did you
 
