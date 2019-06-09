@@ -32,8 +32,6 @@ I just like it :-)
 * Add proper API calls and error handling
 * Increase support for older browsers
 * Move CSS to BIO
-* Find a way to use srcset with react-cloudinary(!)
-* Create react-cloudinary Typescript types declaration
 * Replace simple gray background with some nice svg for Placeholder
 * Add loading indicators
 * Clean up the code a little
@@ -48,6 +46,9 @@ I just like it :-)
   * Add some nice animations to the the new apperaing items
   * Reflect the progress through a scroll in url using react-router
   * "Virtualize" items out of the fold, for a a better performance with long scrolls
+  * Intersection Observer
+* Create sizes method for generating sizes property on Picture (for example for the grid, where desktop may use smaller image than mobile)
+* Add alt tag to image
 
 ---
 

@@ -49,7 +49,7 @@ class DetailRoute extends React.Component<DetailRouteProps, DetailRouteState> {
       return null;
     }
 
-    const { publicId, width, height, title } = image;
+    const { width, height, title } = image;
 
     return (
       <section className="App">
@@ -63,9 +63,7 @@ class DetailRoute extends React.Component<DetailRouteProps, DetailRouteState> {
                 <div className="col-12 d-flex justify-content-center">
                   <div style={{ maxWidth: width }}>
                     <Picture
-                      publicId={publicId}
-                      width={width}
-                      height={height}
+                      image={image}
                     />
                   </div>
                 </div>
