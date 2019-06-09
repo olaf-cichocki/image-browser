@@ -1,16 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Image as CloudImage, Transformation } from 'cloudinary-react';
-import { ImageData } from '../../entities/picture';
+import PictureEntity from '../../entities/picture';
+import { IMAGES_ENDPOINT } from '../../constants/api';
 import Placeholder from './Placeholder';
 import css from './Picture.module.scss';
+import { observer } from 'mobx-react';
 
-interface ImageProps extends Partial<ImageData> {
-  width: number;
-  height: number;
+interface ImageProps {
+  image: PictureEntity;
+  sizes?: string;
   className?: string;
   placeholderColor?: string;
-  [x: string]: any; // TODO: Add types to cloudinary-react and extend that instead
 }
 
 interface ImageState {
@@ -18,7 +18,15 @@ interface ImageState {
   error: boolean;
 }
 
+@observer
 class Image extends React.Component<ImageProps, ImageState> {
+  static endpointUrl = IMAGES_ENDPOINT;
+  static endpointSettings = 'f_auto,q_auto/';
+  static breakPoints = [320, 576, 768, 1024, 1200, 1600, 2048, 2560, 3200, 3840];
+  static getReponsiveUrl(breakpoint: number, id: PictureEntity['publicId']) {
+    return `${Image.endpointUrl}w_${breakpoint},${Image.endpointSettings}${id}`
+  }
+
   state: ImageState = {
     loaded: false,
     error: false
@@ -31,7 +39,7 @@ class Image extends React.Component<ImageProps, ImageState> {
   }
 
   componentDidUpdate(prevProps: ImageProps) {
-    const isSameImage = this.props.publicId === prevProps.publicId;
+    const isSameImage = this.props.image.publicId === prevProps.image.publicId;
     const isAlreadyLoaded = this.image.current!.complete;
 
     if (this.state.error && !isSameImage) {
@@ -55,14 +63,28 @@ class Image extends React.Component<ImageProps, ImageState> {
     this.setState({ loaded: true });
   };
 
+  private getSrcSet = (): string => {
+    const { width: imageWidth, publicId } = this.props.image;
+    const srcSet = Image.breakPoints
+      .filter(breakpoint => breakpoint <= imageWidth)
+      .map(breakpoint =>
+        `${Image.getReponsiveUrl(breakpoint, publicId)} ${breakpoint}w`
+      )
+      .join(',');
+    return srcSet;
+  }
+
   render() {
     const {
-      width,
-      height,
-      publicId,
+      image: {
+        width,
+        height,
+        publicId,
+        title,
+      },
+      sizes,
       className,
       placeholderColor = 'gray',
-      ...imageProps
     } = this.props;
     const { loaded, error } = this.state;
 
@@ -83,22 +105,18 @@ class Image extends React.Component<ImageProps, ImageState> {
             placeholderColor={placeholderColor}
           />
         )}
-        <CloudImage
-          responsive
+        <img
           ref={this.image}
-          quality="auto"
-          fetchFormat="auto"
-          placeholder="blank"
+          alt={title}
+          src={Image.endpointUrl + Image.endpointSettings + publicId}
+          srcSet={this.getSrcSet()}
+          sizes={sizes}
           className={classNames(css.image, {
             className,
             [css.isLoading]: !loaded
           })}
           onLoad={this.setLoaded}
-          publicId={publicId}
-          {...imageProps}
-        >
-          <Transformation width="auto" dpr="auto" crop="scale" />
-        </CloudImage>
+        />
       </figure>
     );
   }

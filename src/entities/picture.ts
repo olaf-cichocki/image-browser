@@ -9,9 +9,9 @@ export interface ImageData {
 }
 
 class PictureEntity {
-  publicId: string = '';
-  width: number = 0;
-  height: number = 0;
+  readonly publicId: string = '';
+  readonly width: number = 0;
+  readonly height: number = 0;
   @observable title: string = 'Untitled';
 
   @action.bound rename(newTitle: string) {
